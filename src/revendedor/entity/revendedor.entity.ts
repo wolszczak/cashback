@@ -1,10 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, BaseEntity } from "typeorm";
-import { Role } from "src/role/entity/role.entity";
+import { Venda } from "src/venda/entity/venda.entity";
 
 @Entity()
-export class Usuario extends BaseEntity{
+export class Revendedor extends BaseEntity{
 
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryGeneratedColumn()
     id: number
 
     @Column({length : 255})
@@ -22,8 +22,6 @@ export class Usuario extends BaseEntity{
     @Column()
     status: boolean
 
-    // @OneToMany(type => Role, role => role.role)
-    // @Column()
-    // roles: Role[]
-
+    @OneToMany(type => Venda, venda => venda.revendedor)
+    vendas : Venda[]
 }

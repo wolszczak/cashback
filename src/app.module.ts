@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm'
-import { RoleModule } from './role/role.module';
-import { UsuarioModule } from './usuario/usuario.module';
+import { RevendedorModule } from './revendedor/revendedor.module';
+import { VendaModule } from './venda/venda.module';
+
 
 @Module({
-  imports: [ TypeOrmModule.forRoot(),RoleModule,UsuarioModule]
+  imports: [ TypeOrmModule.forRoot(),RevendedorModule,VendaModule]
 })
 
 export class AppModule {}
