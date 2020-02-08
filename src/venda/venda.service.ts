@@ -1,11 +1,11 @@
 import { Injectable,  BadRequestException, NotFoundException, HttpService, NotAcceptableException } from "@nestjs/common";
 import { VendaDto } from "./dto/venda.dto";
-import { Revendedor } from "src/revendedor/entity/revendedor.entity";
+import { Revendedor } from "../revendedor/entity/revendedor.entity";
 import { VendaUtil } from "./util/venda.util";
 import { StatusVenda } from "./enum/statusvenda.enum";
 import { Venda } from "./entity/venda.entity";
 import { RevendedorService } from "src/revendedor/revendedor.service";
-import { Util } from "src/common/util/util";
+import { Util } from "../common/util/util/util";
 import { VendaResponse } from "./response/venda.response";
 
 @Injectable()

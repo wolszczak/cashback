@@ -1,17 +1,17 @@
 import { Controller, UseFilters, HttpCode, Post, UseGuards, Body, InternalServerErrorException, Put, Param, Delete, Get } from "@nestjs/common";
 import { VendaService } from "./venda.service";
 import { VendaDto } from "./dto/venda.dto";
+import { ApiTags } from "@nestjs/swagger";
+import { HttpExceptionFilter } from "src/common/util/filter/http.filter";
 
-// @ApiTags('Venda')
+@ApiTags('Venda')
 @Controller('venda')
-// @UseFilters(HttpExceptionFilter)
+@UseFilters(HttpExceptionFilter)
 export class VendaController {
   constructor(private vendaService: VendaService) {}
 
-  // @ApiBearerAuth()
   @HttpCode(201)
   @Post('/createVenda')
-//   @UseGuards(AuthGuard())
   async create(@Body() vendaDto: VendaDto) {
     try {
       return await this.vendaService.createVenda(vendaDto);
@@ -20,7 +20,6 @@ export class VendaController {
     }
   }
 
-  @HttpCode(200)
   @Delete('/deleteVenda/:id')
   async delete(@Param('id') id: number) {
     try {
@@ -30,10 +29,7 @@ export class VendaController {
     }
   }
 
-  // @ApiBearerAuth()
-  @HttpCode(200)
   @Put('/updateVenda/:id')
-  // @UseGuards(AuthGuard())
   async update(@Param('id') id: number, @Body() vendaDto: VendaDto) {
     try {
       await this.vendaService.updateVenda(id, vendaDto);
@@ -42,14 +38,12 @@ export class VendaController {
     }
   }
 
-  // @ApiBearerAuth()
   @Get('/listAllVendas')
-  // @UseGuards(AuthGuard(), RolesGuard)
   async findAll() {
     return await this.vendaService.findAllForResponse();
   }
 
-  @Get('/getCashbackFromApi/:cpf')
+  @Get('/getCashbackFromApiExterna/:cpf')
   async getCashbackAcumulado(@Param('cpf') cpf: string) {
     return await this.vendaService.getCashbackAcumulado(cpf);
   }

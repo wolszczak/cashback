@@ -1,4 +1,4 @@
-import { Revendedor } from "src/revendedor/entity/revendedor.entity";
+import { Revendedor } from "../../revendedor/entity/revendedor.entity";
 import { VendaUtil } from "../util/venda.util";
 
 export class VendaResponse {

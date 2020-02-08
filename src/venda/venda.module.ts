@@ -3,7 +3,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { VendaController } from "./venda. controller";
 import { VendaService } from "./venda.service";
 import { Venda } from "./entity/venda.entity";
-import { RevendedorModule } from "src/revendedor/revendedor.module";
+import { RevendedorModule } from "../revendedor/revendedor.module";
 
 @Module({
     imports: [TypeOrmModule.forFeature([ Venda ]),

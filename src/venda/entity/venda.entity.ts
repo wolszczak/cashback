@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, BaseEntity, Timestamp } from "typeorm";
-import { Revendedor } from "src/revendedor/entity/revendedor.entity";
+import { Revendedor } from "../../revendedor/entity/revendedor.entity";
 
 @Entity()
 export class Venda extends BaseEntity{

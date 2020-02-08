@@ -1,18 +1,18 @@
-import { Revendedor } from "src/revendedor/entity/revendedor.entity";
 import { IsDateString, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { ApiProperty } from "@nestjs/swagger";
 
 export class VendaDto {
-    // @ApiProperty()
+    @ApiProperty()
     @IsString()
     @IsNotEmpty({ message: 'É necessário fornecer o CODIGO.' })
     codigo: string;
   
-    // @ApiProperty({ type: Number })
+    @ApiProperty({ type: Number })
     @IsNumber()
     @IsNotEmpty({ message: 'É necessário fornecer o VALOR.' })
     valor: number;
   
-    // @ApiProperty()
+    @ApiProperty()
     @IsDateString({
       message:
         'É necessário fornecer a data com o formato "yyyy-MM-dd HH:mm:ss"',
@@ -20,7 +20,7 @@ export class VendaDto {
     @IsNotEmpty({ message: 'É necessário fornecer a DATA.' })
     data: Date;
 
-    // @ApiProperty()
+    @ApiProperty()
     @IsString()
     @IsNotEmpty({ message: 'É necessário preencher o CPF.' })
     cpf: string;
