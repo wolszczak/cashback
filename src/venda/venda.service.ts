@@ -23,6 +23,10 @@ export class VendaService {
           novaVenda.valor = vendaDto.valor
           novaVenda.data = vendaDto.data
           novaVenda.revendedor = revendedor;
+          console.log(vendaDto.valor)
+          console.log(vendaDto.data)
+          console.log()
+          console.log()
           if (revendedor.cpf === VendaUtil.cpfMaster) {
             novaVenda.status = StatusVenda.aprovado;
           } else {

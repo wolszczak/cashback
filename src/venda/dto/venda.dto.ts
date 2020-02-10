@@ -15,7 +15,7 @@ export class VendaDto {
     @ApiProperty()
     @IsDateString({
       message:
-        'É necessário fornecer a data com o formato "yyyy-MM-dd HH:mm:ss"',
+        'É necessário fornecer a data com o formato "yyyy-MM-ddTHH:mm:ss"',
     })
     @IsNotEmpty({ message: 'É necessário fornecer a DATA.' })
     data: Date;

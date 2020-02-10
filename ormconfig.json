@@ -1,14 +1,13 @@
 [{
-    "environment": "prod",
-    "name": "production",
-    "driver": {
-        "type": "postgres",
-        "host": "localhost",
-        "port": 5432,
-        "username": "postgres",
-        "password": "#Chumber24",
-        "database": "cashbackprod"
-    },
+    "environment": "dev",
+    "name": "default",
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "postgres",
+    "password": "#Chumbers24",
+    "database": "cashbackprod",
+    "dropSchema":"true",
     "entities": [
         "dist/**/*.entity.js"
     ],
@@ -16,16 +15,15 @@
     "logging": true
 },
 {
-    "environment": "dev",
-    "name": "development",
-    "driver": {
-        "type": "postgres",
-        "host": "localhost",
-        "port": 5432,
-        "username": "postgres",
-        "password": "#Chumbers24",
-        "database": "cashbackdev"
-    },
+    "environment": "test",
+    "name": "test",
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "postgres",
+    "password": "#Chumbers24",
+    "database": "cashbackprod",
+    "dropSchema":"true",
     "entities": [
         "dist/**/*.entity.js"
     ],

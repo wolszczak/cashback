@@ -11,16 +11,17 @@ export class VendaController {
   constructor(private vendaService: VendaService) {}
 
   @HttpCode(201)
-  @Post('/createVenda')
+  @Post('createVenda')
   async create(@Body() vendaDto: VendaDto) {
     try {
+      console.log(vendaDto.data)
       return await this.vendaService.createVenda(vendaDto);
     } catch (err) {
       throw new InternalServerErrorException(err.message);
     }
   }
 
-  @Delete('/deleteVenda/:id')
+  @Delete('deleteVenda/:id')
   async delete(@Param('id') id: number) {
     try {
       this.vendaService.deleteVenda(id);
@@ -29,7 +30,7 @@ export class VendaController {
     }
   }
 
-  @Put('/updateVenda/:id')
+  @Put('updateVenda/:id')
   async update(@Param('id') id: number, @Body() vendaDto: VendaDto) {
     try {
       await this.vendaService.updateVenda(id, vendaDto);
@@ -38,7 +39,7 @@ export class VendaController {
     }
   }
 
-  @Get('/listAllVendas')
+  @Get('listAllVendas')
   async findAll() {
     return await this.vendaService.findAllForResponse();
   }

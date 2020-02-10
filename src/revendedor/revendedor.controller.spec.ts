@@ -1,31 +1,41 @@
 import { RevendedorController } from "./revendedor.controller";
 import { RevendedorService } from "./revendedor.service";
 import { Test } from "@nestjs/testing";
-import * as request from "supertest"
-import axios from "axios"
-import supertest = require("supertest");
+import { RevendedorDto } from "./dto/revendedor.dto";
+import { HttpStatus, INestApplication } from "@nestjs/common";
+import { getConnection, createConnections } from "typeorm";
 
-describe('RevendedorController', () => {
-    let revendedorController: RevendedorController;
-    let revendedorService: RevendedorService;
-    const app = 'http://localhost:3000'
 
-    beforeEach(async () => {
+describe('test1', () => {
+    const revendedorController: RevendedorController = new RevendedorController(new RevendedorService());
+    const revendedorDto: RevendedorDto = new RevendedorDto()
+    revendedorDto.nome = "Admin"
+    revendedorDto.cpf = "15350946056"
+    revendedorDto.email = "email@gmail.com"
+    revendedorDto.password = "senha123"
+    revendedorDto.status = true
+
+    beforeAll(async () => {
+        await createConnections()
+        await getConnection('test')
         const moduleRef = await Test.createTestingModule({
             controllers: [RevendedorController],
             providers: [RevendedorService],
         }).compile();
-
-        revendedorService = moduleRef.get<RevendedorService>(RevendedorService);
-        revendedorController = moduleRef.get<RevendedorController>(RevendedorController);
     });
 
-    describe('REVENDEDOR', () => {
-        it('deve cadastrar um novo revendedor', async () => {
-            return request(app)
-            .post('/cadastrarRevendedor')
-            .expect(200)
-        });
-
+    it('deve cadastrar um novo revendedor', async () => {
+        await revendedorController.insert(revendedorDto)
+        expect(HttpStatus.CREATED)
     });
+
+    it('deve cadastrar um revendedor com o mesmos dados e dar erro', async () => {
+        try {
+            await revendedorController.insert(revendedorDto)
+        } catch (err) {
+            expect(err)
+        }
+    });
+
+
 });
